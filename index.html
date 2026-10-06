@@ -1,0 +1,1887 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0b0a">
+<title>ReKicks — Curated. Reworn. Remarkable.</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root{
+  --black:#0b0b0a;
+  --dark:#11110f;
+  --cream:#f5f1e8;
+  --paper:#ebe5d9;
+  --white:#fffdf8;
+  --gold:#c9a86a;
+  --muted:#77736b;
+  --line:#dcd5c8;
+  --green:#536b4c;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--cream);
+  color:var(--black);
+  font-family:"DM Sans",Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.topbar{
+  background:var(--black);
+  color:#eee;
+  text-align:center;
+  padding:9px 15px;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.navbar{
+  height:78px;
+  background:rgba(245,241,232,.94);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.nav-inner{
+  width:min(1280px,94%);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:3px;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+.nav-links{
+  display:flex;
+  gap:32px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.nav-links a{
+  position:relative;
+}
+
+.nav-links a:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-7px;
+  width:0;
+  height:1px;
+  background:var(--black);
+  transition:.3s;
+}
+
+.nav-links a:hover:after{
+  width:100%;
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.icon-btn{
+  width:42px;
+  height:42px;
+  border:1px solid var(--line);
+  background:transparent;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:16px;
+}
+
+.icon-btn:hover{
+  background:var(--black);
+  color:white;
+}
+
+.cart-number{
+  position:absolute;
+  margin:-30px 0 0 27px;
+  background:var(--black);
+  color:white;
+  font-size:9px;
+  min-width:17px;
+  height:17px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+}
+
+.hero{
+  min-height:760px;
+  background:
+    radial-gradient(circle at 76% 30%,rgba(201,168,106,.22),transparent 28%),
+    radial-gradient(circle at 15% 70%,rgba(255,255,255,.07),transparent 25%),
+    var(--black);
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:70px 70px;
+}
+
+.hero-inner{
+  width:min(1280px,94%);
+  min-height:760px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  position:relative;
+  z-index:1;
+  gap:30px;
+}
+
+.hero-copy{
+  animation:rise .9s ease both;
+}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:none}
+}
+
+.kicker{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(55px,7.5vw,106px);
+  line-height:.88;
+  font-weight:600;
+  letter-spacing:-4px;
+  max-width:750px;
+}
+
+.hero h1 em{
+  color:var(--gold);
+  font-style:normal;
+}
+
+.hero-text{
+  max-width:540px;
+  margin:30px 0;
+  color:#bdb9b0;
+  line-height:1.8;
+  font-size:15px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:15px 23px;
+  border-radius:3px;
+  border:1px solid var(--gold);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.5px;
+  transition:.25s;
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:var(--black);
+}
+
+.btn-gold:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+}
+
+.btn-outline{
+  color:white;
+  background:transparent;
+}
+
+.btn-outline:hover{
+  background:white;
+  color:var(--black);
+}
+
+.hero-visual{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:500px;
+  position:relative;
+}
+
+.shoe-art{
+  width:440px;
+  height:300px;
+  max-width:90%;
+  border-radius:48% 52% 22% 30%;
+  background:
+    linear-gradient(145deg,#eee8db 0%,#c9c0af 48%,#746d60 100%);
+  transform:rotate(-12deg);
+  box-shadow:
+    0 50px 80px rgba(0,0,0,.5),
+    inset 0 2px 0 rgba(255,255,255,.7);
+  position:relative;
+  animation:float 4s ease-in-out infinite;
+}
+
+.shoe-art:before{
+  content:"REKICKS";
+  position:absolute;
+  left:115px;
+  top:115px;
+  font-size:28px;
+  letter-spacing:3px;
+  font-weight:800;
+  color:#22201c;
+}
+
+.shoe-art:after{
+  content:"";
+  position:absolute;
+  bottom:-18px;
+  left:12%;
+  width:76%;
+  height:35px;
+  border-radius:50%;
+  background:#f5f1e8;
+  box-shadow:0 8px 0 #aaa395;
+}
+
+@keyframes float{
+  0%,100%{transform:rotate(-12deg) translateY(0)}
+  50%{transform:rotate(-9deg) translateY(-12px)}
+}
+
+.hero-tag{
+  position:absolute;
+  right:3%;
+  top:15%;
+  border:1px solid rgba(201,168,106,.5);
+  padding:15px;
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--gold);
+  transform:rotate(8deg);
+}
+
+.marquee{
+  background:var(--gold);
+  color:var(--black);
+  overflow:hidden;
+  white-space:nowrap;
+  border-bottom:1px solid #a78953;
+}
+
+.marquee-track{
+  display:inline-block;
+  padding:13px 0;
+  font-size:11px;
+  letter-spacing:3px;
+  font-weight:800;
+  animation:move 20s linear infinite;
+}
+
+@keyframes move{
+  to{transform:translateX(-50%)}
+}
+
+.container{
+  width:min(1280px,94%);
+  margin:auto;
+}
+
+.section{
+  padding:100px 0;
+}
+
+.section-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:25px;
+  margin-bottom:38px;
+}
+
+.section-label{
+  color:#967a4b;
+  font-size:10px;
+  letter-spacing:3px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.section-title{
+  font-family:"Playfair Display",serif;
+  font-size:52px;
+  line-height:1;
+  margin-top:10px;
+}
+
+.section-sub{
+  color:var(--muted);
+  max-width:420px;
+  line-height:1.7;
+  font-size:13px;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  gap:18px;
+}
+
+.feature{
+  min-height:390px;
+  background:var(--black);
+  color:white;
+  padding:40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:end;
+  position:relative;
+  overflow:hidden;
+}
+
+.feature.small{
+  background:#d9d0bf;
+  color:var(--black);
+}
+
+.feature-number{
+  position:absolute;
+  right:25px;
+  top:20px;
+  font-size:11px;
+  letter-spacing:2px;
+  opacity:.6;
+}
+
+.feature-shoe{
+  position:absolute;
+  right:-30px;
+  top:60px;
+  width:65%;
+  height:190px;
+  background:linear-gradient(145deg,#f3eee5,#938b7c);
+  border-radius:50%;
+  transform:rotate(-12deg);
+  opacity:.85;
+}
+
+.feature h3{
+  font-family:"Playfair Display",serif;
+  font-size:36px;
+  position:relative;
+}
+
+.feature p{
+  color:#aaa59b;
+  font-size:12px;
+  line-height:1.7;
+  max-width:390px;
+  margin-top:10px;
+  position:relative;
+}
+
+.feature.small p{
+  color:#645f55;
+}
+
+.products-section{
+  background:#f0eadf;
+}
+
+.shop-tools{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+}
+
+.search{
+  display:flex;
+  align-items:center;
+  background:white;
+  border:1px solid var(--line);
+  min-width:270px;
+  padding:0 14px;
+}
+
+.search input{
+  border:0;
+  outline:0;
+  background:transparent;
+  padding:13px 8px;
+  width:100%;
+}
+
+.filters{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+.filter{
+  border:1px solid var(--line);
+  background:white;
+  padding:11px 15px;
+  border-radius:30px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.filter.active,
+.filter:hover{
+  background:var(--black);
+  color:white;
+  border-color:var(--black);
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.product{
+  background:white;
+  border:1px solid #e0d9cd;
+  position:relative;
+  transition:.3s;
+  overflow:hidden;
+}
+
+.product:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 45px rgba(0,0,0,.09);
+}
+
+.product-image{
+  height:270px;
+  background:#e4ded2;
+  position:relative;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+
+.product-image:before{
+  content:"";
+  width:190px;
+  height:115px;
+  border-radius:52% 48% 35% 30%;
+  background:linear-gradient(145deg,#f6f2ea,#8e877a);
+  transform:rotate(-14deg);
+  box-shadow:0 25px 35px rgba(0,0,0,.16);
+}
+
+.product-image.dark:before{
+  background:linear-gradient(145deg,#393733,#080808);
+}
+
+.product-image.brown:before{
+  background:linear-gradient(145deg,#9c7650,#33271c);
+}
+
+.product-image.white:before{
+  background:linear-gradient(145deg,#fff,#b7b1a5);
+}
+
+.product-badge{
+  position:absolute;
+  left:12px;
+  top:12px;
+  background:var(--black);
+  color:white;
+  padding:7px 9px;
+  font-size:8px;
+  letter-spacing:1px;
+  font-weight:700;
+}
+
+.wish{
+  position:absolute;
+  right:12px;
+  top:12px;
+  width:33px;
+  height:33px;
+  border-radius:50%;
+  border:0;
+  background:rgba(255,255,255,.9);
+}
+
+.product-info{
+  padding:18px;
+}
+
+.product-brand{
+  color:#a08552;
+  font-size:9px;
+  letter-spacing:2px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.product-name{
+  font-size:17px;
+  font-weight:700;
+  margin:7px 0 8px;
+}
+
+.product-meta{
+  color:#858078;
+  font-size:10px;
+  margin-bottom:15px;
+}
+
+.product-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.product-price{
+  font-weight:800;
+}
+
+.add-btn{
+  border:0;
+  background:var(--black);
+  color:white;
+  padding:10px 12px;
+  font-size:10px;
+  font-weight:700;
+}
+
+.coming{
+  background:var(--black);
+  color:white;
+  padding:90px 0;
+}
+
+.coming-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.coming h2{
+  font-family:"Playfair Display",serif;
+  font-size:58px;
+  line-height:1;
+  margin:12px 0 20px;
+}
+
+.coming p{
+  color:#a8a49b;
+  max-width:520px;
+  line-height:1.8;
+}
+
+.email-box{
+  display:flex;
+  margin-top:25px;
+  max-width:470px;
+}
+
+.email-box input{
+  flex:1;
+  border:1px solid #3b3934;
+  background:#171614;
+  color:white;
+  padding:14px;
+  outline:0;
+}
+
+.email-box button{
+  border:0;
+  background:var(--gold);
+  padding:0 18px;
+  font-weight:800;
+}
+
+.drop-card{
+  border:1px solid #393630;
+  padding:30px;
+  background:#131311;
+}
+
+.drop-date{
+  color:var(--gold);
+  letter-spacing:3px;
+  font-size:10px;
+  font-weight:700;
+}
+
+.drop-card h3{
+  font-family:"Playfair Display",serif;
+  font-size:38px;
+  margin:12px 0;
+}
+
+.drop-card p{
+  font-size:12px;
+}
+
+.values{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.value{
+  padding:35px 20px;
+  border-right:1px solid var(--line);
+}
+
+.value:last-child{
+  border-right:0;
+}
+
+.value-icon{
+  font-size:22px;
+  margin-bottom:15px;
+}
+
+.value h4{
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.value p{
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.story{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+
+.story-art{
+  min-height:500px;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(201,168,106,.35),transparent 30%),
+    #171613;
+  position:relative;
+  overflow:hidden;
+}
+
+.story-art:before{
+  content:"RK";
+  position:absolute;
+  font-family:"Playfair Display",serif;
+  font-size:240px;
+  color:rgba(255,255,255,.035);
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.story-circle{
+  width:270px;
+  height:270px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  display:grid;
+  place-items:center;
+  color:var(--gold);
+  letter-spacing:5px;
+  font-size:12px;
+}
+
+.story-copy h2{
+  font-family:"Playfair Display",serif;
+  font-size:55px;
+  line-height:1;
+  margin:12px 0 20px;
+}
+
+.story-copy p{
+  color:var(--muted);
+  line-height:1.9;
+  font-size:13px;
+  margin-bottom:16px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:28px;
+}
+
+.stat{
+  border-top:1px solid var(--line);
+  padding-top:14px;
+}
+
+.stat strong{
+  display:block;
+  font-family:"Playfair Display",serif;
+  font-size:30px;
+}
+
+.stat span{
+  font-size:9px;
+  color:var(--muted);
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.newsletter{
+  background:var(--paper);
+  text-align:center;
+  padding:85px 20px;
+}
+
+.newsletter h2{
+  font-family:"Playfair Display",serif;
+  font-size:50px;
+  margin:10px 0;
+}
+
+.newsletter p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.newsletter-form{
+  display:flex;
+  max-width:510px;
+  margin:25px auto 0;
+}
+
+.newsletter-form input{
+  flex:1;
+  border:1px solid var(--line);
+  padding:15px;
+  background:white;
+  outline:0;
+}
+
+.newsletter-form button{
+  background:var(--black);
+  color:white;
+  border:0;
+  padding:0 22px;
+  font-weight:700;
+}
+
+footer{
+  background:var(--black);
+  color:white;
+  padding:65px 0 25px;
+}
+
+.footer-grid{
+  width:min(1280px,94%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-brand p{
+  color:#8d8981;
+  line-height:1.7;
+  font-size:12px;
+  max-width:320px;
+  margin-top:15px;
+}
+
+.footer-title{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:2px;
+  font-weight:800;
+  margin-bottom:15px;
+}
+
+.footer-links{
+  display:grid;
+  gap:10px;
+  color:#aaa69e;
+  font-size:12px;
+}
+
+.footer-bottom{
+  width:min(1280px,94%);
+  margin:50px auto 0;
+  padding-top:20px;
+  border-top:1px solid #292824;
+  display:flex;
+  justify-content:space-between;
+  color:#68655e;
+  font-size:10px;
+}
+
+.cart-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:1800;
+  display:none;
+}
+
+.cart-overlay.show{
+  display:block;
+}
+
+.cart{
+  position:fixed;
+  z-index:1900;
+  right:-460px;
+  top:0;
+  width:min(440px,100%);
+  height:100vh;
+  background:var(--white);
+  transition:.35s ease;
+  display:flex;
+  flex-direction:column;
+  padding:25px;
+}
+
+.cart.open{
+  right:0;
+}
+
+.cart-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+}
+
+.cart-head h3{
+  font-family:"Playfair Display",serif;
+  font-size:30px;
+}
+
+.close{
+  border:0;
+  background:none;
+  font-size:28px;
+}
+
+.cart-items{
+  flex:1;
+  overflow:auto;
+  padding:15px 0;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:55px 1fr auto;
+  gap:12px;
+  align-items:center;
+  border-bottom:1px solid #eee8dd;
+  padding:14px 0;
+}
+
+.cart-thumb{
+  width:55px;
+  height:55px;
+  background:#e5dfd3;
+  display:grid;
+  place-items:center;
+}
+
+.cart-thumb:before{
+  content:"";
+  width:38px;
+  height:22px;
+  border-radius:50%;
+  background:#aaa297;
+  transform:rotate(-15deg);
+}
+
+.cart-name{
+  font-size:12px;
+  font-weight:700;
+}
+
+.cart-size{
+  color:#888;
+  font-size:10px;
+  margin-top:4px;
+}
+
+.cart-remove{
+  border:0;
+  background:none;
+  color:#9a4f4f;
+  font-size:10px;
+}
+
+.cart-bottom{
+  border-top:1px solid var(--line);
+  padding-top:18px;
+}
+
+.cart-total{
+  display:flex;
+  justify-content:space-between;
+  font-weight:800;
+  font-size:18px;
+}
+
+.checkout{
+  width:100%;
+  margin-top:14px;
+  padding:15px;
+  background:var(--black);
+  color:white;
+  border:0;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,20px);
+  background:var(--black);
+  color:white;
+  padding:13px 18px;
+  font-size:11px;
+  z-index:3000;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+.mobile-menu{
+  display:none;
+}
+
+@media(max-width:1000px){
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .hero{min-height:650px}
+  .hero-inner{min-height:650px}
+  .values{grid-template-columns:repeat(2,1fr)}
+  .value:nth-child(2){border-right:0}
+  .value:nth-child(3){border-top:1px solid var(--line)}
+  .value:nth-child(4){border-top:1px solid var(--line);border-right:0}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:700px){
+  .nav-links{display:none}
+  .mobile-menu{display:block}
+  .navbar{height:68px}
+  .section{padding:70px 0}
+  .section-title{font-size:40px}
+  .section-top{display:block}
+  .section-sub{margin-top:15px}
+  .feature-grid{grid-template-columns:1fr}
+  .feature{min-height:330px}
+  .coming-inner,.story{grid-template-columns:1fr}
+  .story-art{min-height:380px}
+  .coming h2,.story-copy h2,.newsletter h2{font-size:42px}
+}
+
+@media(max-width:520px){
+  .product-grid{grid-template-columns:1fr}
+  .values{grid-template-columns:1fr}
+  .value{border-right:0!important;border-bottom:1px solid var(--line)}
+  .value:last-child{border-bottom:0}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{display:block;line-height:2}
+  .hero h1{font-size:56px}
+  .email-box,.newsletter-form{display:flex}
+  .email-box button,.newsletter-form button{padding:0 13px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  ReKicks — Curated Pre-Owned Footwear • New Drops Coming Soon
+</div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+
+    <a class="logo" href="#">RE<span>KICKS</span></a>
+
+    <div class="nav-links">
+      <a href="#shop">Shop</a>
+      <a href="#drops">Drops</a>
+      <a href="#story">Our Story</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="focusSearch()" aria-label="Search">⌕</button>
+      <button class="icon-btn" onclick="toggleCart()" aria-label="Shopping bag">
+        ♡
+        <span class="cart-number" id="cartCount">0</span>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-copy">
+      <div class="kicker">The new standard of thrift</div>
+
+      <h1>
+        CURATED.<br>
+        <em>REWORN.</em><br>
+        REMARKABLE.
+      </h1>
+
+      <p class="hero-text">
+        ReKicks brings carefully selected pre-owned sneakers back into
+        rotation. Better style, better value, and a second life for
+        great footwear.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#shop" class="btn btn-gold">Explore Collection</a>
+        <a href="#drops" class="btn btn-outline">View Next Drop</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-tag">EST. 2026<br>PAKISTAN</div>
+      <div class="shoe-art"></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    AUTHENTICITY • CONDITION CHECKED • CURATED PAIRS • BETTER VALUE • REKICKS •
+    AUTHENTICITY • CONDITION CHECKED • CURATED PAIRS • BETTER VALUE • REKICKS •
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-top">
+      <div>
+        <div class="section-label">THE EDIT</div>
+        <h2 class="section-title">Made to stand out.</h2>
+      </div>
+
+      <p class="section-sub">
+        Not every pair deserves a place in the collection.
+        We focus on sneakers worth wearing again.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature">
+        <div class="feature-number">01 / FEATURED</div>
+        <div class="feature-shoe"></div>
+        <h3>The Everyday Icons</h3>
+        <p>
+          Timeless silhouettes selected for everyday rotation.
+          Clean, wearable and easy to style.
+        </p>
+      </div>
+
+      <div class="feature small">
+        <div class="feature-number">02 / DROP</div>
+        <h3>Fresh pairs are coming.</h3>
+        <p>
+          We're building the first official ReKicks drop.
+          Follow along so you don't miss it.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="products-section section" id="shop">
+
+  <div class="container">
+
+    <div class="section-top">
+      <div>
+        <div class="section-label">SHOP REKICKS</div>
+        <h2 class="section-title">The Collection</h2>
+      </div>
+
+      <p class="section-sub">
+        Our first collection is currently being curated.
+        Preview the experience below.
+      </p>
+    </div>
+
+    <div class="shop-tools">
+
+      <div class="search">
+        <span>⌕</span>
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search sneakers..."
+          oninput="searchProducts()"
+        >
+      </div>
+
+      <div class="filters">
+        <button class="filter active" onclick="filterProducts('all',this)">All</button>
+        <button class="filter" onclick="filterProducts('Sneakers',this)">Sneakers</button>
+        <button class="filter" onclick="filterProducts('Running',this)">Running</button>
+        <button class="filter" onclick="filterProducts('Casual',this)">Casual</button>
+      </div>
+
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+
+  </div>
+</section>
+
+<section class="coming" id="drops">
+  <div class="container coming-inner">
+
+    <div>
+      <div class="section-label">NEXT DROP</div>
+
+      <h2>
+        Something<br>
+        worth waiting for.
+      </h2>
+
+      <p>
+        We're currently sourcing and checking our first official
+        ReKicks inventory. Join the list and be first to know when
+        the collection goes live.
+      </p>
+
+      <form class="email-box" onsubmit="joinList(event)">
+        <input id="dropEmail" type="email" placeholder="Your email address" required>
+        <button>JOIN LIST</button>
+      </form>
+    </div>
+
+    <div class="drop-card">
+      <div class="drop-date">REKICKS / DROP 001</div>
+      <h3>FIRST EDIT</h3>
+      <p>
+        A carefully selected mix of sneakers, everyday classics and
+        running pairs. Each pair will be graded by condition before
+        being listed.
+      </p>
+
+      <div style="margin-top:30px;border-top:1px solid #36332d;padding-top:20px">
+        <span style="color:#8d8981;font-size:10px;letter-spacing:2px">
+          STATUS
+        </span>
+        <strong style="display:block;color:#d3b473;margin-top:7px">
+          CURRENTLY CURATING
+        </strong>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="values">
+
+      <div class="value">
+        <div class="value-icon">✦</div>
+        <h4>Curated Selection</h4>
+        <p>Every pair is selected with style and wearability in mind.</p>
+      </div>
+
+      <div class="value">
+        <div class="value-icon">◇</div>
+        <h4>Condition Graded</h4>
+        <p>Clear condition levels help you know exactly what you're buying.</p>
+      </div>
+
+      <div class="value">
+        <div class="value-icon">↻</div>
+        <h4>Second Life</h4>
+        <p>Great footwear gets another chance instead of being forgotten.</p>
+      </div>
+
+      <div class="value">
+        <div class="value-icon">⌁</div>
+        <h4>Easy Ordering</h4>
+        <p>Simple online browsing with direct ordering when drops launch.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="story">
+
+  <div class="container story">
+
+    <div class="story-art">
+      <div class="story-circle">REKICKS</div>
+    </div>
+
+    <div class="story-copy">
+      <div class="section-label">OUR STORY</div>
+
+      <h2>
+        Great kicks<br>
+        deserve another life.
+      </h2>
+
+      <p>
+        ReKicks was created around a simple idea: style shouldn't
+        always mean buying brand new.
+      </p>
+
+      <p>
+        We want to make quality pre-owned footwear feel premium,
+        transparent and easy to shop.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>01</strong>
+          <span>First Drop</span>
+        </div>
+        <div class="stat">
+          <strong>A+</strong>
+          <span>Condition Goal</span>
+        </div>
+        <div class="stat">
+          <strong>∞</strong>
+          <span>Second Lives</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="newsletter" id="contact">
+
+  <div class="section-label">STAY IN THE LOOP</div>
+
+  <h2>Don't miss the drop.</h2>
+
+  <p>
+    Follow ReKicks and stay updated with upcoming pairs.
+  </p>
+
+  <form class="newsletter-form" onsubmit="newsletter(event)">
+    <input type="email" placeholder="Email address" required>
+    <button>SUBSCRIBE</button>
+  </form>
+
+  <div style="margin-top:20px">
+    <a
+      href="https://instagram.com/"
+      target="_blank"
+      class="btn"
+      style="display:inline-block;background:white;border-color:#ccc"
+    >
+      Instagram →
+    </a>
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="footer-grid">
+
+    <div class="footer-brand">
+      <div class="logo">RE<span>KICKS</span></div>
+      <p>
+        Premium thrift footwear, carefully curated and ready for
+        another life.
+      </p>
+    </div>
+
+    <div>
+      <div class="footer-title">SHOP</div>
+      <div class="footer-links">
+        <a href="#shop">All Sneakers</a>
+        <a href="#shop">Running</a>
+        <a href="#shop">Casual</a>
+        <a href="#drops">Upcoming Drop</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-title">REKICKS</div>
+      <div class="footer-links">
+        <a href="#story">Our Story</a>
+        <a href="#contact">Contact</a>
+        <a href="#drops">Join Drop List</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-title">SOCIAL</div>
+      <div class="footer-links">
+        <a href="https://instagram.com/" target="_blank">Instagram</a>
+        <a href="#" onclick="openWhatsApp()">WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 ReKicks. All rights reserved.</span>
+    <span>Curated in Pakistan.</span>
+  </div>
+
+</footer>
+
+<div class="cart-overlay" id="overlay" onclick="toggleCart()"></div>
+
+<aside class="cart" id="cart">
+
+  <div class="cart-head">
+    <h3>Your Bag</h3>
+    <button class="close" onclick="toggleCart()">×</button>
+  </div>
+
+  <div class="cart-items" id="cartItems">
+    <p style="color:#888;font-size:12px;padding:20px 0">
+      Your bag is empty.
+    </p>
+  </div>
+
+  <div class="cart-bottom">
+
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">Rs. 0</span>
+    </div>
+
+    <button class="checkout" onclick="checkout()">
+      CONTINUE TO ORDER
+    </button>
+
+  </div>
+
+</aside>
+
+<div class="toast" id="toast">Added to bag</div>
+
+<script>
+
+const products = [
+
+  {
+    id:1,
+    brand:"Nike",
+    name:"Air Max — Curated Pair",
+    category:"Sneakers",
+    size:"UK 9",
+    condition:"A+ CONDITION",
+    price:8500,
+    image:""
+  },
+
+  {
+    id:2,
+    brand:"Adidas",
+    name:"Ultraboost — Curated Pair",
+    category:"Running",
+    size:"UK 10",
+    condition:"A CONDITION",
+    price:7200,
+    image:"dark"
+  },
+
+  {
+    id:3,
+    brand:"New Balance",
+    name:"574 — Curated Pair",
+    category:"Casual",
+    size:"UK 8",
+    condition:"A+ CONDITION",
+    price:6500,
+    image:"brown"
+  },
+
+  {
+    id:4,
+    brand:"Nike",
+    name:"Air Force 1 — Curated Pair",
+    category:"Casual",
+    size:"UK 9",
+    condition:"A CONDITION",
+    price:9000,
+    image:"white"
+  },
+
+  {
+    id:5,
+    brand:"Puma",
+    name:"RS-X — Curated Pair",
+    category:"Sneakers",
+    size:"UK 9",
+    condition:"A CONDITION",
+    price:5800,
+    image:"dark"
+  },
+
+  {
+    id:6,
+    brand:"ASICS",
+    name:"Gel — Curated Pair",
+    category:"Running",
+    size:"UK 10",
+    condition:"A+ CONDITION",
+    price:7800,
+    image:""
+  },
+
+  {
+    id:7,
+    brand:"Reebok",
+    name:"Classic — Curated Pair",
+    category:"Casual",
+    size:"UK 8",
+    condition:"A CONDITION",
+    price:5600,
+    image:"brown"
+  },
+
+  {
+    id:8,
+    brand:"Nike",
+    name:"Dunk Low — Curated Pair",
+    category:"Sneakers",
+    size:"UK 9",
+    condition:"A+ CONDITION",
+    price:9500,
+    image:"white"
+  }
+
+];
+
+let cart=[];
+
+function renderProducts(list=products){
+
+  const grid=document.getElementById("productGrid");
+
+  if(!list.length){
+
+    grid.innerHTML=`
+      <div style="grid-column:1/-1;text-align:center;padding:50px;color:#777">
+        No pairs found.
+      </div>
+    `;
+
+    return;
+  }
+
+  grid.innerHTML=list.map(p=>`
+
+    <article class="product">
+
+      <div class="product-image ${p.image}">
+
+        <span class="product-badge">${p.condition}</span>
+
+        <button class="wish" onclick="wishlist(this)">
+          ♡
+        </button>
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-brand">${p.brand}</div>
+
+        <div class="product-name">${p.name}</div>
+
+        <div class="product-meta">
+          ${p.size} • Pre-owned • Condition checked
+        </div>
+
+        <div class="product-bottom">
+
+          <div class="product-price">
+            Rs. ${p.price.toLocaleString()}
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="addToCart(${p.id})"
+          >
+            ADD
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  `).join("");
+
+}
+
+function filterProducts(category,btn){
+
+  document.querySelectorAll(".filter")
+    .forEach(x=>x.classList.remove("active"));
+
+  btn.classList.add("active");
+
+  document.getElementById("searchInput").value="";
+
+  if(category==="all"){
+    renderProducts(products);
+  }else{
+    renderProducts(
+      products.filter(p=>p.category===category)
+    );
+  }
+
+}
+
+function searchProducts(){
+
+  const value=document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+  document.querySelectorAll(".filter")
+    .forEach(x=>x.classList.remove("active"));
+
+  const result=products.filter(p=>
+    p.name.toLowerCase().includes(value) ||
+    p.brand.toLowerCase().includes(value) ||
+    p.category.toLowerCase().includes(value)
+  );
+
+  renderProducts(result);
+
+}
+
+function focusSearch(){
+
+  document.getElementById("shop")
+    .scrollIntoView({behavior:"smooth"});
+
+  setTimeout(()=>{
+    document.getElementById("searchInput").focus();
+  },500);
+
+}
+
+function addToCart(id){
+
+  const product=products.find(p=>p.id===id);
+
+  cart.push(product);
+
+  updateCart();
+
+  showToast(product.name+" added to bag");
+
+  openCart();
+
+}
+
+function removeCart(index){
+
+  cart.splice(index,1);
+
+  updateCart();
+
+}
+
+function updateCart(){
+
+  document.getElementById("cartCount")
+    .textContent=cart.length;
+
+  const box=document.getElementById("cartItems");
+
+  if(!cart.length){
+
+    box.innerHTML=`
+      <p style="color:#888;font-size:12px;padding:20px 0">
+        Your bag is empty.
+      </p>
+    `;
+
+  }else{
+
+    box.innerHTML=cart.map((p,i)=>`
+
+      <div class="cart-item">
+
+        <div class="cart-thumb"></div>
+
+        <div>
+          <div class="cart-name">${p.name}</div>
+          <div class="cart-size">
+            ${p.size} • Rs. ${p.price.toLocaleString()}
+          </div>
+        </div>
+
+        <button
+          class="cart-remove"
+          onclick="removeCart(${i})"
+        >
+          REMOVE
+        </button>
+
+      </div>
+
+    `).join("");
+
+  }
+
+  const total=cart.reduce(
+    (sum,p)=>sum+p.price,
+    0
+  );
+
+  document.getElementById("cartTotal")
+    .textContent="Rs. "+total.toLocaleString();
+
+}
+
+function toggleCart(){
+
+  document.getElementById("cart")
+    .classList.toggle("open");
+
+  document.getElementById("overlay")
+    .classList.toggle("show");
+
+}
+
+function openCart(){
+
+  document.getElementById("cart")
+    .classList.add("open");
+
+  document.getElementById("overlay")
+    .classList.add("show");
+
+}
+
+function wishlist(button){
+
+  button.textContent=
+    button.textContent==="♡" ? "♥" : "♡";
+
+  showToast(
+    button.textContent==="♥"
+    ? "Added to wishlist"
+    : "Removed from wishlist"
+  );
+
+}
+
+function showToast(message){
+
+  const toast=document.getElementById("toast");
+
+  toast.textContent=message;
+
+  toast.classList.add("show");
+
+  setTimeout(()=>{
+    toast.classList.remove("show");
+  },1800);
+
+}
+
+function joinList(event){
+
+  event.preventDefault();
+
+  const email=document.getElementById("dropEmail").value;
+
+  if(email){
+
+    showToast("You're on the drop list.");
+
+    event.target.reset();
+
+  }
+
+}
+
+function newsletter(event){
+
+  event.preventDefault();
+
+  showToast("You're subscribed to ReKicks.");
+
+  event.target.reset();
+
+}
+
+function openWhatsApp(){
+
+  const phone="923001234567";
+
+  const message=
+    "Hello ReKicks! I want to know about the upcoming drop.";
+
+  window.open(
+    "https://wa.me/"+phone+
+    "?text="+encodeURIComponent(message),
+    "_blank"
+  );
+
+}
+
+function checkout(){
+
+  if(!cart.length){
+
+    showToast("Your bag is empty.");
+
+    return;
+
+  }
+
+  const total=cart.reduce(
+    (sum,p)=>sum+p.price,
+    0
+  );
+
+  let message=
+    "Hello ReKicks! I want to order:%0A%0A";
+
+  cart.forEach((p,i)=>{
+
+    message+=
+      (i+1)+". "+
+      p.name+
+      " | "+
+      p.size+
+      " | Rs. "+
+      p.price+
+      "%0A";
+
+  });
+
+  message+=
+    "%0ATotal: Rs. "+
+    total+
+    "%0A%0APlease confirm availability.";
+
+  /* CHANGE THIS TO YOUR REAL WHATSAPP NUMBER */
+
+  const phone="923001234567";
+
+  window.open(
+    "https://wa.me/"+
+    phone+
+    "?text="+message,
+    "_blank"
+  );
+
+}
+
+renderProducts();
+updateCart();
+
+</script>
+
+</body>
+</html>
+```
